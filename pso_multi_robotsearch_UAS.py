@@ -8,17 +8,11 @@ from pyswarms.utils.plotters.formatters import Mesher, Designer
 
 import random
 
-def cost_function(xnew):
+def signal_intensity(x):
+    
+    i = 2.0/x ** 2 +  1
 
-    v = 1
-    x = 1
-    w = 2.0
-    pw = random()
-    nw = random()
-    vnew = (w*v) + pw * (xnew - x) + nw * (xnew - x)
-    xnew = x + vnew
-
-    return xnew
+    return i
 
 # Set-up hyperparameters
 options = {'c1': 0.5, 'c2': 0.3, 'w':0.9, 'k': 2, 'p': 2}
@@ -27,7 +21,7 @@ options = {'c1': 0.5, 'c2': 0.3, 'w':0.9, 'k': 2, 'p': 2}
 optimizer = ps.single.LocalBestPSO(n_particles=20, dimensions=2, options=options)
 
 # Perform optimization
-best_cost, best_pos = optimizer.optimize(fx.sphere, iters=1000)
+best_cost, best_pos = optimizer.optimize(signal_intensity, iters=1000)
 
 #plot cost history
 plot_cost_history(optimizer.cost_history)
