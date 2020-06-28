@@ -15,7 +15,7 @@ def signal_intensity(x):
     return i
 
 # Set-up hyperparameters
-options = {'c1': 0.5, 'c2': 0.3, 'w':0.9, 'k': 2, 'p': 2}
+options = {'c1': 0.5, 'c2': 0.3, 'w':1.2, 'k': 2, 'p': 2}
 
 # Call instance of PSO
 optimizer = ps.single.LocalBestPSO(n_particles=20, dimensions=2, options=options)
